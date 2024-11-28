@@ -154,6 +154,17 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Sensitive data files
+.env
+.env.local
+config.py
+*.key
+*.pem
+
+# Logs and other temporary files
+*.log
+*.sqlite3
+
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
