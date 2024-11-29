@@ -1,7 +1,10 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, render_template
+from .model import User, TodoItem
+from . import db
 
-main = Blueprint('main', __name__)
+bp = Blueprint('main', __name__)
 
-@main.route('/')
-def home():
-    return jsonify({"message": "Welcome to the To-Do App API!"})
+@bp.route('/')
+def index():
+    todos = TodoItem.query.all()
+    return render_template('index.html', todos=todos)

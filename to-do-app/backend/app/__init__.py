@@ -1,15 +1,15 @@
 from flask import Flask
-from flask_sqlalchemy from SQLAlchemy
-from flask_migrate from Migrate
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+import os
 
 db = SQLAlchemy()
 migrate = Migrate()
 
-def create_app():
+def create_app(config_class='config.Config'):
     app = Flask(__name__)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config.from_object(config_class)
 
     db.init_app(app)
     migrate.init_app(app, db)
@@ -17,4 +17,4 @@ def create_app():
     from .routes import main
     app.register_blueprint(main)
 
-    return app
+    return app./venv/bin/python
